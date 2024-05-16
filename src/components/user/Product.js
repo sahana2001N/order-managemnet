@@ -128,7 +128,7 @@ function Product() {
 
   useEffect(() => {
     // Fetch data from the URL
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('http://localhost:7070/api/product/allProducts')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -150,8 +150,8 @@ function Product() {
               <div className="card-body">
                 <h5 className="card-title">{user.name}</h5>
                 <h6 className="card-subtitle mb-2 text-muted">{user.username}</h6>
-                <p className="card-text">Email: {user.email}</p>
-                <p className="card-text">Phone: {user.phone}</p>
+                <p className="card-text">Email: {user.price}</p>
+                <p className="card-text">Phone: {user.description}</p>
                 {/* Call addToCart function with user data when button is clicked */}
                 <button onClick={() => addToCart(user)} className="btn btn-primary">Add to Cart</button>
               </div>

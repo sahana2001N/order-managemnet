@@ -30,7 +30,7 @@ const Login = () => {
                 setTimeout(() => {
                     setLoginData({ username: '', password: '' });
                     dispatch(userLogin(response));
-                    navigate('/profile');
+                    navigate('/home');
                 }, 2000);
             })
             .catch((error) => {

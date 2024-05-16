@@ -1,113 +1,18 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-// const ItemList = () => {
-//     const [empList, setEmpList] = useState('');
-//     useEffect(() => {
-//         console.log('useEffect');
-//         axios.get('https://jsonplaceholder.typicode.com/users')
-//             .then((resp) => {
-//                 console.log(resp.data);
-//                 setEmpList(resp.data);
-//             })
-//     }, []);
-//     return (
-//         <>
-//             <h1>View Products</h1>
-//             <table>
-//                 <thead>
-//                     <th>Name</th> <th>Username</th> <th>Email</th> <th>City</th>
-//                 </thead>
-//                 <tbody>
-//                     {empList && empList.map(emp =>
-//                         <tr key={emp.id}>
-//                             <td >{emp.name} </td>
-//                             <td >{emp.username} </td>
-//                             <td >{emp.email} </td>
-//                             <td >{emp.address.city} </td>
-//                         </tr>
-//                     )}
-//                 </tbody>
-//             </table>
-//         </>
-//     );
-// };
-// export default ItemList;
-
-
-
-
-// import axios from "axios";
-// import { useEffect, useState } from "react";
-// const ItemList = () => {
-//     const [empList, setEmpList] = useState([]);
-//     useEffect(() => {
-//         console.log('useEffect');
-//         axios.get('https://jsonplaceholder.typicode.com/users')
-//             .then((resp) => {
-//                 console.log(resp.data);
-//                 setEmpList(resp.data);
-//             })
-//     }, []);
-//     const handleDelete = (id) => {
-//         // Implement delete functionality here
-//         console.log("Deleting employee with ID:", id);
-//         // You can use axios.delete or any other method to delete the employee
-//     };
-//     return (
-//         <div className="container mt-5">
-//             <h1>Employee List</h1>
-//             <table className="table table-striped">
-//                 <thead>
-//                     <tr>
-//                         <th>Name</th>
-//                         <th>Username</th>
-//                         <th>Email</th>
-//                         <th>City</th>
-//                         <th>Delete</th> {/* New column for Delete button */}
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     {empList.map(emp => (
-//                         <tr key={emp.id}>
-//                             <td>{emp.name}</td>
-//                             <td>{emp.username}</td>
-//                             <td>{emp.email}</td>
-//                             <td>{emp.address.city}</td>
-//                             <td>
-//                                 <button
-//                                     className="btn btn-danger"
-//                                     onClick={() => handleDelete(emp.id)}
-//                                 >
-//                                     Delete
-//                                 </button>
-//                             </td>
-//                         </tr>
-//                     ))}
-//                 </tbody>
-//             </table>
-//         </div>
-//     );
-// };
-// export default ItemList;
-
-
-
-//new code
-// import React, { useState, useEffect } from 'react';
+// import React, { useState,useEffect } from 'react';
 // import axios from "axios";
 
 // const ItemList = () => {
-//     const [empList, setEmpList] = useState([]);
+//     const [proList, setProList] = useState([]);
 //     const [product, setProduct] = useState({ name: '', price: '' });
 //     const [showAddForm, setShowAddForm] = useState(false);
 
 //     useEffect(() => {
-//         axios.get('https://jsonplaceholder.typicode.com/users')
+//         axios.get('http://localhost:7070/api/product/allProducts')
 //             .then((resp) => {
-//                 setEmpList(resp.data);
+//                 setProList(resp.data);
 //             })
 //             .catch((error) => {
-//                 console.error('Error fetching employee data:', error);
+//                 console.error('Error fetching product data:', error);
 //             });
 //     }, []);
 
@@ -123,10 +28,12 @@
 //         console.log('Product submitted:', product);
 //         // Add logic to handle product submission
 //         // For example, send product data to a backend API
+//         // After submission, hide the form
+//         setShowAddForm(false);
 //     };
 
 //     const handleDelete = (id) => {
-//         console.log("Deleting employee with ID:", id);
+//         console.log("Deleting product with ID:", id);
 //         // Implement delete functionality here
 //     };
 
@@ -139,12 +46,16 @@
 //                             <h2>Add Products</h2>
 //                             <form onSubmit={handleSubmit}>
 //                                 <div className="form-group">
-//                                     <label>Product name:</label>
+//                                     <label>Product:</label>
 //                                     <input type="text" className="form-control" name="name" value={product.name} onChange={handleChange} required />
 //                                 </div>
 //                                 <div className="form-group">
 //                                     <label>Price:</label>
 //                                     <input type="text" className="form-control" name="price" value={product.price} onChange={handleChange} required />
+//                                 </div>
+//                                 <div className="form-group">
+//                                     <label>Description:</label>
+//                                     <input type="text" className="form-control" name="description" value={product.description} onChange={handleChange} required />
 //                                 </div>
 //                                 <button type="submit" className="btn btn-primary">Add Product</button>
 //                             </form>
@@ -153,28 +64,30 @@
 //                 </div>
 //             )}
 
-//             <div className="d-flex justify-content-end mb-2">
-//                 <button type="button" className="btn btn-primary" onClick={() => setShowAddForm(!showAddForm)}>Add Products</button>
-//             </div>
+//             {!showAddForm && (
+//                 <div className="d-flex justify-content-end mb-2">
+//                     <button type="button" className="btn btn-primary" onClick={() => setShowAddForm(true)}>Add Products</button>
+//                 </div>
+//             )}
 
-//             <h1>Employee List</h1>
+//             <h1>Product List</h1>
 //             <table className="table">
 //                 <thead className="thead-dark">
 //                     <tr>
-//                         <th>Name</th>
-//                         <th>Username</th>
-//                         <th>Email</th>
+//                         <th>Product</th>
+//                         <th>Price</th>
+//                         <th>Description</th>
 //                         <th>Delete</th>
 //                     </tr>
 //                 </thead>
 //                 <tbody>
-//                     {empList.map(emp =>
-//                         <tr key={emp.id}>
-//                             <td>{emp.name}</td>
-//                             <td>{emp.username}</td>
-//                             <td>{emp.email}</td>
+//                     {proList.map(pro =>
+//                         <tr key={pro.id}>
+//                             <td>{pro.name}</td>
+//                             <td>{pro.price}</td>
+//                             <td>{pro.description}</td>
 //                             <td>
-//                                 <button className="btn btn-danger" onClick={() => handleDelete(emp.id)}>Delete</button>
+//                                 <button className="btn btn-danger" onClick={() => handleDelete(pro.id)}>Delete</button>
 //                             </td>
 //                         </tr>
 //                     )}
@@ -186,65 +99,76 @@
 
 // export default ItemList;
 
-
-
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
-
 const ItemList = () => {
-    const [empList, setEmpList] = useState([]);
-    const [product, setProduct] = useState({ name: '', price: '' });
+    const [proList, setProList] = useState([]);
+    const [product, setProduct] = useState({ name: '', price: '', description: '' });
     const [showAddForm, setShowAddForm] = useState(false);
-
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/users')
+        axios.get('http://localhost:7070/api/product/allProducts')
             .then((resp) => {
-                setEmpList(resp.data);
+                setProList(resp.data);
             })
             .catch((error) => {
-                console.error('Error fetching employee data:', error);
+                console.error('Error fetching product data:', error);
             });
     }, []);
-
     const handleChange = (evt) => {
         setProduct({
             ...product,
             [evt.target.name]: evt.target.value
         });
     };
-
     const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log('Product submitted:', product);
-        // Add logic to handle product submission
-        // For example, send product data to a backend API
-        // After submission, hide the form
-        setShowAddForm(false);
+        axios.post('http://localhost:7070/api/product/create', product)
+            .then((resp) => {
+                // Add the newly created product to the product list
+                setProList([...proList, resp.data]);
+                // Clear the form fields
+                setProduct({ name: '', price: '', description: '' });
+                // Hide the form
+                setShowAddForm(false);
+            })
+            .catch((error) => {
+                console.error('Error adding product:', error);
+            });
     };
-
-    const handleDelete = (id) => {
-        console.log("Deleting employee with ID:", id);
-        // Implement delete functionality here
+    const handleDelete = (name) => {
+        axios.delete(`http://localhost:7070/api/product/delete/${name}`)
+            .then(() => {
+                // Remove the deleted product from the product list
+                setProList(proList.filter(product => product.name !== name));
+                console.log("Successfully deleted product with name:", name);
+            })
+            .catch((error) => {
+                console.error('Error deleting product:', error);
+            });
     };
-
     return (
         <>
+            {/* Add product form */}
             {showAddForm && (
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-md-6">
                             <h2>Add Products</h2>
                             <form onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <label>Product name:</label>
-                                    <input type="text" className="form-control" name="name" value={product.name} onChange={handleChange} required />
-                                </div>
-                                <div className="form-group">
-                                    <label>Price:</label>
-                                    <input type="text" className="form-control" name="price" value={product.price} onChange={handleChange} required />
-                                </div>
-                                <button type="submit" className="btn btn-primary">Add Product</button>
-                            </form>
+                                 <div className="form-group">
+                                     <label>Product:</label>
+                                     <input type="text" className="form-control" name="name" value={product.name} onChange={handleChange} required />
+                                 </div>
+                                 <div className="form-group">
+                                     <label>Price:</label>
+                                     <input type="number" className="form-control" name="price" value={product.price} onChange={handleChange} required />
+                                 </div>
+                                 <div className="form-group">
+                                     <label>Description:</label>
+                                     <input type="text" className="form-control" name="description" value={product.description} onChange={handleChange} required />
+                                 </div>
+                                <button type="submit" className="btn btn-primary">Add Product</button>                             </form>
                         </div>
                     </div>
                 </div>
@@ -256,24 +180,24 @@ const ItemList = () => {
                 </div>
             )}
 
-            <h1>Employee List</h1>
+            <h1>Product List</h1>
             <table className="table">
                 <thead className="thead-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {empList.map(emp =>
-                        <tr key={emp.id}>
-                            <td>{emp.name}</td>
-                            <td>{emp.username}</td>
-                            <td>{emp.email}</td>
+                     <tr>
+                         <th>Product</th>
+                        <th>Price</th>
+                         <th>Description</th>
+                         <th>Delete</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     {proList.map(pro =>
+                        <tr key={pro.id}>
+                            <td>{pro.name}</td>
+                            <td>{pro.price}</td>
+                            <td>{pro.description}</td>
                             <td>
-                                <button className="btn btn-danger" onClick={() => handleDelete(emp.id)}>Delete</button>
+                                <button className="btn btn-danger" onClick={() => handleDelete(pro.name)}>Delete</button>
                             </td>
                         </tr>
                     )}
@@ -282,10 +206,7 @@ const ItemList = () => {
         </>
     );
 };
-
 export default ItemList;
-
-
 
 
 

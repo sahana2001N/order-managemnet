@@ -4,12 +4,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import EmpReducer from './EmpSlice';
 import UserReducer from './UserSlice';
 import AdminReducer from './adminSlice'
+import ProductReducer from "./productSlice";
 
 const store = configureStore({
     reducer: {
         emp: EmpReducer,
         user: UserReducer,
-        admin:AdminReducer
+        admin:AdminReducer,
+        product:ProductReducer
     }
 });
 
