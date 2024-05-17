@@ -18,19 +18,15 @@ function Product() {
 
   // Function to handle adding item to cart
   const addToCart = (product) => {
-    // const existingItem = cart.find(item => item.id === product.id);
-    // console.log(existingItem);
+
     let temp = cart;
     temp.push(product);
     setCart(temp);
-    // // if (existingItem) {
-    // setCart(cart.map(item => (item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)));
+
     alert("Product added successfully");
     console.log(cart);
     console.log(cart.length);
-    // } else {
-    //   setCart([...cart, { ...product, quantity: product.quantity }]);
-    // }
+    dispatch(addItem(product))
   };
  
 
