@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Login from "./user/Login";
+
 import Home from "./Home";
 import Page404 from './Page404';
 import Register from './user/Register';
@@ -11,8 +12,8 @@ import AdminLogin from "./admin/adminLogin";
 import ItemList from "./admin/ItemList";
 import Product from "./user/Product";
 import Cart from "./user/Cart";
-
-import React, { useState } from 'react';
+import React from 'react';
+import UpdateProfile from "./user/UpdateProfile";
 
 const AppRoutes = () => {
     const loginStatus = useSelector(store => store.user.loginStatus);
@@ -23,23 +24,25 @@ const AppRoutes = () => {
 
     return (
         <BrowserRouter>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            
+            <nav className="navbar navbar-expand-lg bg-primary">
+
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">Project</Link>
+                    <Link className="navbar-brand" to="" style={{"color":"white"}}>Project</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className="nav-link" to="/home">Home</Link>
+                                <Link className="nav-link" to="/home" style={{"color":"white"}}>Home</Link>
                             </li>
                             {loginStatus ? (
                                 <>
                                 
                                     
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/product">Product</Link>
+                                        <Link className="nav-link" to="/product" style={{"color":"white"}}>Product</Link>
                                     </li>
                             
                                 </>
@@ -50,28 +53,28 @@ const AppRoutes = () => {
                                 <>
                                     
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/cart">
+                                        <Link className="nav-link" to="/cart" style={{"color":"white"}}>
                                             <i className="bi bi-cart"></i> {/* Bootstrap Icons */}
-                                           Cart
+                                            {/* Or <i className="fa fa-shopping-cart"></i> if you are using FontAwesome */}
                                         </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/profile">Profile</Link>
+                                        <Link className="nav-link" to="/profile" style={{"color":"white"}}>Profile</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/logout">Logout</Link>
+                                        <Link className="nav-link" to="/logout" style={{"color":"white"}}>Logout</Link>
                                     </li>
                                 </>
                             ) : (
                                 <>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/admin">Admin</Link>
+                                        <Link className="nav-link" to="/admin" style={{"color":"white"}}>Admin</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/login">Login</Link>
+                                        <Link className="nav-link" to="/login" style={{"color":"white"}}>Login</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to="/register">Register</Link>
+                                        <Link className="nav-link" to="/register" style={{"color":"white"}}>Register</Link>
                                     </li>
                                 </>
                             )}
@@ -81,7 +84,7 @@ const AppRoutes = () => {
             </nav>
 
             <Routes>
-                <Route path="/home" element={<Home />} />
+                <Route path="*" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin" element={<AdminLogin />} />
                 <Route path="/itemlist" element={<ItemList />} />
@@ -90,7 +93,8 @@ const AppRoutes = () => {
                 <Route path="/logout" element={<Logout />} />
                  <Route path="/product" element={<Product />} />
                 <Route path="/cart" element={<Cart />} /> 
-                <Route path="*" element={<Page404 />} />
+                <Route path="/update" element={<UpdateProfile />} /> 
+                
                 
             </Routes>
         </BrowserRouter>
