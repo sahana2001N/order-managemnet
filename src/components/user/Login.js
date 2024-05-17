@@ -43,56 +43,6 @@ const Login = () => {
     return (
         <>
 
-<<<<<<< HEAD
-=======
-            {/* <h1>Login Component</h1>
-            <p>Login here</p>
-            <form onSubmit={handleLoginSubmit}>
-                <input type="text" name="username" value={loginData.username}
-                    onChange={handleChange} autoFocus required />
-                <br />
-                <input type="password" name="password" value={loginData.password}
-                    onChange={handleChange} required />
-                <br />
-                <input type="submit" value="Login" />
-            </form>
-            {afterSubmit && <p>{afterSubmit}</p>}
-            <p>Not yet registered? <Link to={'/register'}>Register</Link> </p> */}
-            {/*
->>>>>>> upstream/main
-<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
-<div style={{ width: '300px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#fff' }}>
-    <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Login</h2>
-  <form onSubmit={handleLoginSubmit}>
-<div class="mb-3">
-    <label class="form-label">Username</label>
-    <input type="text" class="form-control" name="username" value={loginData.username}
-                    onChange={handleChange} autoFocus required />
-   </div>
-  <div class="mb-3">
-    <label class="form-label">Password</label>
-    <input type="password" class="form-control" name="password" value={loginData.password}
-                    onChange={handleChange} required />
-   </div>
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-
-{afterSubmit && <p>{afterSubmit}</p>}
-<p>Not yet registered? <Link to={'/register'}>Register</Link> </p>
-</form>
- </div>
- </div>
-<<<<<<< HEAD
- 
-=======
-        */}
-
-
-
-
-
-
-
 
             <section style={{ height: '100vh' }}>
                 <div className="container-fluid" style={{ height: '100%' }}>
@@ -208,14 +158,10 @@ const Login = () => {
                 </div>
             </section>
 
->>>>>>> upstream/main
 
         </>
     );
 };
-<<<<<<< HEAD
-export default Login;
-=======
 export default Login;
 
 
@@ -226,4 +172,3 @@ export default Login;
 
 
 
->>>>>>> upstream/main

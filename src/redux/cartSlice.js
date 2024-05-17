@@ -26,8 +26,4 @@ const cartSlice = createSlice({
 });
 export default cartSlice.reducer;
 
-<<<<<<< HEAD
 export const {addItem,updateQuantity} = cartSlice.actions;
-=======
-export const {cartObj,setAllCart} = cartSlice.actions;
->>>>>>> upstream/main

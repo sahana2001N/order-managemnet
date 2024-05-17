@@ -34,58 +34,21 @@ const Register = () => {
                 }, 2000);
             })
 
-<<<<<<< HEAD
-=======
             // .catch((error) => {
             //  console.log(error);
             //  setAfterRegisterMessage(`Invalid credentials!`);
             //  });
->>>>>>> upstream/main
 
             .catch((error) => {
                 console.log(error);
                 setRegisterData({ username: '', password: '' });
                 setAfterRegisterMessage(`Username already exists!`);
             });
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> upstream/main
 
     };
 
     return (
         <>
-<<<<<<< HEAD
-<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
-<div style={{ width: '300px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#fff' }}>
-    <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Register Here</h2>
-<form onSubmit={handleRegisterSubmit}>
-<div class="mb-3">
-<label class="form-label">Username</label>
-    <input type="text" class="form-control" name="username" value={registerData.username}
-                    onChange={handleChange} auto required />
-   </div>
-  <div class="mb-3">
-  <label class="form-label">Password</label>
-    <input type="password" class="form-control" name="password" value={registerData.password}
-                    onChange={handleChange} required />
-   </div>
-  
-  <button type="submit" class="btn btn-primary">Register</button>
-<>
-<p>{afterRegisterMessage && afterRegisterMessage} </p>
-</>
-<p>Already registered? <Link to={'/login'}>Login</Link> </p> 
-</form>
-</div>
-</div>
-=======
-
-
-
-
 
             <section className="vh-300" style={{ backgroundColor: '#eee' }}>
                 <div className="container h-100">
@@ -191,7 +154,6 @@ const Register = () => {
                 </div>
             </section>
 
->>>>>>> upstream/main
 
         </>
     );

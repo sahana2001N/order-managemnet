@@ -1,10 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import UpdateProfile from "./UpdateProfile";
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
->>>>>>> upstream/main
 
 const Profile = () => {
     const userData = useSelector((state) => state.user.loggedInUser);
@@ -12,19 +9,6 @@ const Profile = () => {
     return (
         <>
             
-<<<<<<< HEAD
-            {userData && (
-                <div>
-                    <p>Username: {userData.username}</p>
-                    <p>Fist name: {userData.firstName}</p>
-                    <p>Last Name: {userData.lastName}</p>
-                    <p>Phone: {userData.phone}</p>
-                    <p>Email: {userData.email}</p>
-                    {userData.avatar && <img width={'300px'} src={userData.avatar} alt="Avatar" />}
-                </div>
-            )}
-            <UpdateProfile />
-=======
 
 {userData && (
 
@@ -88,7 +72,6 @@ const Profile = () => {
       </div>
     </section>
 )};
->>>>>>> upstream/main
         </>
     );
 };
