@@ -34,10 +34,6 @@ const Register = () => {
                 }, 2000);
             })
 
-            // .catch((error) => {
-            //  console.log(error);
-            //  setAfterRegisterMessage(`Invalid credentials!`);
-            //  });
 
             .catch((error) => {
                 console.log(error);
@@ -50,21 +46,6 @@ const Register = () => {
 
     return (
         <>
-            {/* <h1>Register Component</h1>
-            <p>Register here</p>
-            <form onSubmit={handleRegisterSubmit}>
-                <input type="text" name="username" value={registerData.username}
-                    onChange={handleChange} autoFocus required />
-                <br />
-                <input type="password" name="password" value={registerData.password}
-                    onChange={handleChange} required />
-                <br />
-                <input type="submit" value="Register" />
-            </form>
-            <>
-                <p>{afterRegisterMessage && afterRegisterMessage} </p>
-            </>
-            <p>Already registered? <Link to={'/login'}>Login</Link> </p> */}
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
 <div style={{ width: '300px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#fff' }}>
     <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Register Here</h2>

@@ -43,20 +43,6 @@ const Login = () => {
     return (
         <>
 
-            {/* <h1>Login Component</h1>
-            <p>Login here</p>
-            <form onSubmit={handleLoginSubmit}>
-                <input type="text" name="username" value={loginData.username}
-                    onChange={handleChange} autoFocus required />
-                <br />
-                <input type="password" name="password" value={loginData.password}
-                    onChange={handleChange} required />
-                <br />
-                <input type="submit" value="Login" />
-            </form>
-            {afterSubmit && <p>{afterSubmit}</p>}
-            <p>Not yet registered? <Link to={'/register'}>Register</Link> </p> */}
-
 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
 <div style={{ width: '300px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#fff' }}>
     <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Login</h2>
