@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addItem , updateQuantity} from '../../redux/cartSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../redux/cartSlice';
+
+
 function Product() {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const cartItems = useSelector(state => state.cart.items); // Access cart items from Redux store
 
   useEffect(() => {
     // Fetch data from the URL
@@ -17,40 +19,42 @@ function Product() {
   }, []); // Empty dependency array ensures the effect runs only once
 
   // Function to handle adding item to cart
-  const addToCart = (product) => {
+  // const addToCart = (product) => {
+  //   const existingItem = cartItems.find(item => item.id === product.id); // Check if the product is already in the cart
+  //   if (existingItem) {
+  //     // If the product is already in the cart, update its quantity
+  //     const updatedItem = { ...existingItem, quantity: existingItem.quantity + 1 };
+  //     dispatch(addItem(updatedItem)); // Dispatch action to update the quantity in the cart state
+  //   } else {
+  //     // If the product is not in the cart, add it with quantity 1
+  //     const newItem = { ...product, quantity: 1 };
+  //     dispatch(addItem(newItem)); // Dispatch action to add the product to the cart state
+  //   }
+  //   alert("Product added successfully");
+  // };
 
-    let temp = cart;
-    temp.push(product);
-    setCart(temp);
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  }
 
-    alert("Product added successfully");
-    console.log(cart);
-    console.log(cart.length);
-    dispatch(addItem(product))
-  };
- 
+  // Function to handle decrementing quantity
+  // const decrementQuantity = (product) => {
+  //   if (product.quantity > 1) {
+  //     const updatedProduct = { ...product, quantity: product.quantity - 1 };
+  //     setProducts(products.map(p => (p.id === product.id ? updatedProduct : p)));
+  //   }
+  // };
 
+  // // Function to handle incrementing quantity
+  // const incrementQuantity = (product) => {
+  //   const updatedProduct = { ...product, quantity: product.quantity + 1 };
+  //   setProducts(products.map(p => (p.id === product.id ? updatedProduct : p)));
+  // };
 
-  const updateQuantity = (productId, newQuantity) => {
-    setProducts(products.map(product => (
-      product.id === productId ? { ...product, quantity: newQuantity } : product
-    )));
-  };
-
-  const incrementQuantity = (product) => {
-    updateQuantity(product.id, product.quantity + 1);
-  };
-
-  const decrementQuantity = (product) => {
-    if (product.quantity > 1) {
-      updateQuantity(product.id, product.quantity - 1);
-    }
-  };
-  
   return (
     <div className="container">
       <div className="row">
-        {/* Mapping over the users array and rendering a card component for each user */}
+        {/* Mapping over the products array and rendering a card component for each product */}
         {products.map(product => (
           <div key={product.id} className="col-md-4 mb-4">
             <div className="card" style={{ width: '18rem' }}>
@@ -59,19 +63,18 @@ function Product() {
                 <p className="card-text">Price: {product.price}</p>
                 <p className="card-text">Id: {product.id}</p>
                 <p className="card-text">Description: {product.description}</p>
-                <div className="input-group mb-3">
+                {/* <div className="input-group mb-3">
                   <button className="btn btn-outline-secondary" type="button" onClick={() => decrementQuantity(product)}>-</button>
                   <input type="text" className="form-control text-center" value={product.quantity} readOnly />
                   <button className="btn btn-outline-secondary" type="button" onClick={() => incrementQuantity(product)}>+</button>
-                </div>
-                {/* Call addToCart function with user data when button is clicked */}
-                <button onClick={() => addToCart(product)} className="btn btn-primary">Add to Cart</button>
+                </div> */}
+                {/* Call addToCart function with product data when button is clicked */}
+                <button onClick={() => handleAddToCart(product)} className="btn btn-primary">Add to Cart</button>
               </div>
             </div>
           </div>
         ))}
       </div>
-      {/* <button onClick={viewCart} className="btn btn-secondary">View Cart</button> */}
     </div>
   );
 }
