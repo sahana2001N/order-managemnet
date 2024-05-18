@@ -1,22 +1,34 @@
 
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Login from "./user/Login";
+import "react-toastify/dist/ReactToastify.css"
 
 import Home from "./Home";
 import Page404 from './Page404';
 import Register from './user/Register';
 import Profile from "./user/Profile";
 import Logout from './user/Logout';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AdminLogin from "./admin/adminLogin";
 import ItemList from "./admin/ItemList";
 import Product from "./user/Product";
 import Cart from "./user/Cart";
-import React from 'react';
+import React, { useEffect } from 'react';
 import UpdateProfile from "./user/UpdateProfile";
+import { ToastContainer } from "react-toastify";
+import { getTotal } from "../redux/cartSlice";
+
+
 
 const AppRoutes = () => {
     const loginStatus = useSelector(store => store.user.loginStatus);
+    const cart = useSelector((state) => state.cart)
+    const dispatch = useDispatch()
+
+
+    useEffect(() => {
+        dispatch(getTotal())
+      }, [cart])
 
 
   
@@ -24,6 +36,7 @@ const AppRoutes = () => {
 
     return (
         <BrowserRouter>
+        <ToastContainer/>
             
             <nav className="navbar navbar-expand-lg bg-primary">
 
@@ -54,7 +67,7 @@ const AppRoutes = () => {
                                     
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/cart" style={{"color":"white"}}>
-                                            <i className="bi bi-cart"></i> {/* Bootstrap Icons */}
+                                            <i className="bi bi-cart"> {cart.cartTotalQuantity} </i> {/* Bootstrap Icons */}
                                             {/* Or <i className="fa fa-shopping-cart"></i> if you are using FontAwesome */}
                                         </Link>
                                     </li>
